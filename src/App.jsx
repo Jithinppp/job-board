@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import Layout from "./Layout";
-import Home from "./routes/Home";
-import Jobs from "./routes/Jobs";
-import Employers from "./routes/Employers";
-import Companies from "./routes/Companies";
-import Job from "./routes/Job";
-import SignIn from "./routes/SignIn";
+import Layout from "./layout/Layout";
+import Home from "./pages/Home";
+import Jobs from "./pages/Jobs";
+import Employers from "./pages/Employers";
+import Companies from "./pages/Companies";
+import Job from "./pages/Job";
+import SignIn from "./pages/SignIn";
 
 function App() {
   return (
