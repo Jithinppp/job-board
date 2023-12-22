@@ -1,14 +1,32 @@
-import { useGetJobsQuery } from "../services/jobsApi";
+// libs
+import { motion } from "framer-motion";
+// others
+import { useGetListOfJobsQuery } from "../services/jobsApi";
+// comps
 import Loader from "../components/ui/Loader/Loader";
 import JobCard from "../components/JobCard/JobCard";
 import SearchInputForm from "../components/SearchInputForm/SearchInputForm";
+import { useState } from "react";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 function Jobs() {
-  const { data, isLoading, isSuccess } = useGetJobsQuery({ limit: 5, page: 1 });
+  const [page, setPage] = useState(1);
+  const { data, isLoading, isSuccess } = useGetListOfJobsQuery({
+    limit: 5,
+    page,
+  });
+  console.log(data);
+  console.log(page);
 
   return (
-    <div className="flex flex-col">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className="flex flex-col transition-all"
+    >
       <SearchInputForm />
+      <motion.div className="md:hidden block bg-rose-400">filters</motion.div>
       {isLoading && <Loader styles={"mx-auto mb-10"} />}
       {isSuccess && (
         <div className="grid md:grid-cols-jobContainerCol grid-rows-1">
@@ -28,8 +46,29 @@ function Jobs() {
           </div>
         </div>
       )}
-      <div className="mt-4">pagination</div>
-    </div>
+      {isSuccess && (
+        <div className="mt-4 flex items-center justify-center">
+          {data.previous && (
+            <motion.button whileTap={{ scale: 0.7 }}>
+              <FaAngleLeft
+                onClick={() => setPage((prev) => prev - 1)}
+                className="w-4 h-4  text-gray-400"
+              />
+            </motion.button>
+          )}
+
+          <span className="mx-3 font-semibold">{page}</span>
+          {data.next && (
+            <motion.button whileTap={{ scale: 0.7 }}>
+              <FaAngleRight
+                onClick={() => setPage((prev) => prev + 1)}
+                className="w-4 h-4 text-gray-400"
+              />
+            </motion.button>
+          )}
+        </div>
+      )}
+    </motion.div>
   );
 }
 

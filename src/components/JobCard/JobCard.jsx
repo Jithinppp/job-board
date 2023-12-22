@@ -3,12 +3,12 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 function JobCard({ jobDetails }) {
-  const { jobId, title, company, industryType, location, description } =
+  const { _id, title, company, industryType, location, description } =
     jobDetails;
   return (
     <div className="bg-neutral-50 p-4 rounded shadow-sm hover:shadow transition-all">
       <Link
-        to={`/job/${jobId}`}
+        to={`/job/${_id}`}
         className="font-semibold text-gray-900 text-lg tracking-tight my-1"
       >
         {title}

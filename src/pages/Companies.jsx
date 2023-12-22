@@ -1,4 +1,14 @@
+// libs
+import { motion } from "framer-motion";
 function Companies() {
-  return <div>Companies</div>;
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      Companies
+    </motion.div>
+  );
 }
 export default Companies;

@@ -1,20 +1,27 @@
+// libs
 import { Link } from "react-router-dom";
-import Button from "../components/ui/Button";
+import { motion } from "framer-motion";
+// others
+import { useGetFewJobsQuery } from "../services/jobsApi";
+// components
 import { MdOutlineSearch } from "react-icons/md";
+import Button from "../components/ui/Button";
 import JobCard from "../components/JobCard/JobCard";
 import Loader from "../components/ui/Loader/Loader";
 import Error from "../components/ui/Error/Error";
-import { useGetJobsQuery } from "../services/jobsApi";
 
 function Home() {
-  const { isSuccess, data, isLoading, isError } = useGetJobsQuery({
+  const { isSuccess, data, isLoading, isError } = useGetFewJobsQuery({
     limit: 6,
-    page: 1,
   });
 
   console.log(data);
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       <div className="flex flex-col items-center  mt-14 px-2">
         <h1 className="text-center font-bold text-6xl tracking-[-4px] my-5 text-gray-900">
           The quickest way to get hired
@@ -26,7 +33,7 @@ function Home() {
           <Button type={"link"} path={"/jobs"} variant={"primary"}>
             Find jobs
           </Button>
-          <Button type={"link"} path={"/jobs"} variant={"secondary"}>
+          <Button type={"link"} path={"/sign-in"} variant={"secondary"}>
             Sign up
           </Button>
         </div>
@@ -51,7 +58,7 @@ function Home() {
             data.data.map((job) => <JobCard key={job._id} jobDetails={job} />)}
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 }
 
