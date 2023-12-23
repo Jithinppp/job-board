@@ -1,4 +1,4 @@
-import types from "prop-types";
+import PropTypes from "prop-types";
 import { MdError } from "react-icons/md";
 function Error({ msg, styles }) {
   return (
@@ -9,7 +9,7 @@ function Error({ msg, styles }) {
   );
 }
 Error.propTypes = {
-  msg: types.string,
-  styles: types.string,
+  msg: PropTypes.string,
+  styles: PropTypes.string,
 };
 export default Error;

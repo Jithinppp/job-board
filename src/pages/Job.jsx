@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import dateFormat from "dateformat";
 import { useGetSingleJobQuery } from "../services/jobsApi";
 // comps
-import Loader from "../components/ui/Loader/Loader";
+import Loader from "../components/UI/Loader/Loader";
 import {
   MdBookmarkBorder,
   MdLocationOn,
@@ -12,28 +12,12 @@ import {
   MdOutlineChecklist,
   MdOutlineDateRange,
 } from "react-icons/md";
-import Button from "../components/ui/Button";
+import Button from "../components/UI/Button/Button";
 
 function Job() {
   const { id } = useParams();
-  const { data, isLoading, isError, isSuccess } = useGetSingleJobQuery({ id });
-  // console.log(data);
-  // const {
-  //   benefitsAndPerks,
-  //   company,✅
-  //   description,✅
-  //   education,✅
-  //   employmentType,✅
-  //   experience,
-  //   expireDate,
-  //   industryType,✅
-  //   location,✅
-  //   publishedDate,✅
-  //   requiredSkills,✅
-  //   salary,
-  //   title,✅
-  //   workMode,✅
-  // } = data;
+  const { data, isLoading, isSuccess } = useGetSingleJobQuery({ id });
+
   if (isLoading) return <Loader styles={"mx-auto flex my-10"} />;
   if (isSuccess) {
     return (

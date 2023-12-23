@@ -18,7 +18,7 @@ export const jobsApi = createApi({
     }),
     searchJobs: builder.query({
       query: ({ q, limit, page }) =>
-        `/api/jobs/search?q=${q}&limit=${limit}&page=${page}`,
+        `api/jobs/search?q=${q}&limit=${limit}&page=${page}`,
     }),
   }),
 });

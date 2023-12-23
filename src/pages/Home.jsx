@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { useGetFewJobsQuery } from "../services/jobsApi";
 // components
 import { MdOutlineSearch } from "react-icons/md";
-import Button from "../components/ui/Button";
+import Button from "../components/UI/Button/Button";
 import JobCard from "../components/JobCard/JobCard";
-import Loader from "../components/ui/Loader/Loader";
-import Error from "../components/ui/Error/Error";
+import Loader from "../components/UI/Loader/Loader";
+import Error from "../components/UI/Error/Error";
 
 function Home() {
   const { isSuccess, data, isLoading, isError } = useGetFewJobsQuery({
